@@ -9,6 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { MainComponent } from './main/main.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { FaqComponent } from './faq/faq.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { MainComponent } from './main/main.component';
     HomeComponent,
     ContactComponent,
     AboutUsComponent,
-    MainComponent
+    MainComponent,
+    SignInComponent,
+    SignUpComponent,
+    FaqComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
