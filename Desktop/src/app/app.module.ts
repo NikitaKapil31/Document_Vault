@@ -9,6 +9,15 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { MainComponent } from './main/main.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { UsersComponent } from './users/users.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
+import { DetailsComponent } from './details/details.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -17,7 +26,16 @@ import { MainComponent } from './main/main.component';
     HomeComponent,
     ContactComponent,
     AboutUsComponent,
-    MainComponent
+    MainComponent,
+    DashboardComponent,
+    DocumentsComponent,
+    CategoriesComponent,
+    UsersComponent,
+    ProfileComponent,
+    SettingsComponent,
+    DetailsComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
