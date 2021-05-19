@@ -9,6 +9,10 @@ import { DocumentsComponent } from './documents/documents.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { UsersComponent } from './users/users.component';
+import { FaqComponent } from './faq/faq.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   {path : 'home', component : HomeComponent},
@@ -19,7 +23,11 @@ const routes: Routes = [
   {path : 'documents', component : DocumentsComponent},
   {path : 'categories', component : CategoriesComponent},
   {path: 'users', component: UsersComponent },
-  { path: 'details', component: DetailsComponent }
+  { path: 'details', component: DetailsComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'feedback', component: FeedbackComponent },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent }
 ];
 
 @NgModule({

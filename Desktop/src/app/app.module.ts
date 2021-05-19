@@ -18,7 +18,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { DetailsComponent } from './details/details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SettingsComponent,
     DetailsComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    SignUpComponent,
+    SignInComponent,
+    FeedbackComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
