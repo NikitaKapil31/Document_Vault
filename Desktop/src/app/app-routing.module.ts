@@ -13,9 +13,12 @@ import { FaqComponent } from './faq/faq.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AddDocumentComponent } from './add-document/add-document.component';
+import { ListDocumentComponent } from './list-document/list-document.component';
 
 const routes: Routes = [
   {path : 'home', component : HomeComponent},
+  {path: '', component : HomeComponent },
   {path : 'contact', component : ContactComponent},
   {path : 'about-us', component : AboutUsComponent},
   {path : 'main', component : MainComponent},
@@ -27,7 +30,9 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'sign-in', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent }
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'add-document', component: AddDocumentComponent},
+  { path: 'list-document', component: ListDocumentComponent}
 ];
 
 @NgModule({

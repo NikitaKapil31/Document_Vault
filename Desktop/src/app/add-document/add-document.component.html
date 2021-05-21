@@ -1,0 +1,68 @@
+<div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Add Documents</h5>
+                <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #docForm="ngForm" (ngSubmit)='onSubmit(docForm.value)'>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" #docTitleRef='ngModel' name="title" ngModel class="form-control">
+
+                        <div *ngIf='docTitleRef.errors && docTitleRef.touched' class="alert alert-danger">
+
+                            <div [hidden]='!docTitleRef.errors.required'> Provide Document Title </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select #docCategoryRef='ngModel' name="category" ngModel class="form-control">
+                            <option value="images">Images</option>
+                            <option value="documents">Documents</option>
+                            <option value="videos">Videos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <!-- <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="image" (change)="onFileChanged($event)">
+                            <label for="image" class="custom-file-label">Choose File</label>
+                        </div> -->
+                        <div class="container row">
+                            <div class="col-md-6">
+                                <input type="file" #docFileRef='ngModel' name="file" ngModel class="form-control"
+                                    (change)="onFileChanged($event)">
+
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">Max Size 3mb</small>
+                    </div>
+                    <input type="submit" class="btn btn-primary" [disabled]="!docForm.valid" data-toggle="modal"
+                        data-target="#exampleModal" data-dismiss="modalodal">
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div *ngIf=message>{{message}}</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

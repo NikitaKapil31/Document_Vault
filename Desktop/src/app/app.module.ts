@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
@@ -22,6 +22,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { FaqComponent } from './faq/faq.component';
+import { ListDocumentComponent } from './list-document/list-document.component';
+import { AddDocumentComponent } from './add-document/add-document.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { FaqComponent } from './faq/faq.component';
     SignUpComponent,
     SignInComponent,
     FeedbackComponent,
-    FaqComponent
+    FaqComponent,
+    ListDocumentComponent,
+    AddDocumentComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,7 @@ import { FaqComponent } from './faq/faq.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
