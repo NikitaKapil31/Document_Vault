@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Docs, DocserviceService } from '../docservice.service';
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-list-document',
@@ -9,9 +11,28 @@ import { Docs, DocserviceService } from '../docservice.service';
 })
 export class ListDocumentComponent implements OnInit {
   message: string;
-  constructor() { }
+  docs : Docs[];
+  constructor(private docservice: DocserviceService, private router: Router) {
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): any {
+    this.docservice.getAllDocs().subscribe(
+      response => this.handleSuccessfulResponse(response),
+    );
+  }
+
+  getDocs(docs : Docs){
+    this.docservice.getDoc(docs.id).subscribe(
+      (blob => saveAs(blob, docs.docName))
+    );
+  }
+
+  handleSuccessfulResponse(response) {
+    this.docs = response;
+  }
+  update(updateDocs: Docs) {
+    this.docservice.update(updateDocs);
+    this.router.navigate(['/details']); //updating the employee
   }
  
 }

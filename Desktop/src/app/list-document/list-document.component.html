@@ -7,52 +7,74 @@
                         <h4>Latest Documents</h4>
                     </div>
                     <table class="table table-striped">
-                        <thead class="thead-dark">
+                        <thead class="thead-dark" style="text-align: center;">
                             <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Date</th>
+                                <th>ID</th>
+                                <th>TITLE</th>
+                                <th>CATEGORY</th>
+                                <th>DOCNAME</th>
+                                <th>DOCTYPE</th>
+                                <th>DOCDATA</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>One</td>
-                                <td>Img</td>
-                                <td>May 14 2021</td>
+                            <tr *ngFor="let d of docs" style="text-align: center;">
+                                <td> {{d.id}} </td>
+                                <td> {{d.title}} </td>
+                                <td> {{d.category}} </td>
+                                <td> {{d.docName}}</td>
+                                <td> {{d.docType}}</td>
                                 <td>
-                                    <a href="/details" class="btn btn-secondary">
-                                        <em class="fas fa-angle-double-right"></em> Details
-                                    </a>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Two</td>
-                                <td>Doc</td>
-                                <td>May 14 2021</td>
+                                    <button class="btn btn-info" (click)=getDocs(d) >
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </td> 
+                                <!-- <td>
+                                    <i class="fas fa-trash" (click)=delete()></i>
+                                </td> -->
                                 <td>
-                                    <a href="/details" class="btn btn-secondary">
-                                        <em class="fas fa-angle-double-right"></em> Details
-                                    </a>
-                                </td>
+                                <i class="fas fa-edit" (click)=update(d)></i>
+                                </td> 
+                                
                             </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Three</td>
-                                <td>Video</td>
-                                <td>May 14 2021</td>
-                                <td>
-                                    <a href="/details" class="btn btn-secondary">
-                                        <em class="fas fa-angle-double-right"></em> Details
-                                    </a>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
+        
+                    <div *ngIf="docs.length === 0"><h4 style="text-align:center;"> There are no documents to display,please add the documents! </h4></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center bg-info text-white mb-3">
+                    <div class="card-body">
+                        <h3>Document count</h3>
+                        <h4 class="display-4">
+                            <i class="fas fa-pencil-alt"></i> 3
+
+                        </h4>
+                        <a href="/documents" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+
+                <div class="card text-center bg-success text-white mb-3">
+                    <div class="card-body">
+                        <h3>Categories</h3>
+                        <h4 class="display-4">
+                            <i class="fas fa-folder"></i> 4
+                        </h4>
+                        <a href="/categories" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+
+                <div class="card text-center bg-warning text-white mb-3">
+                    <div class="card-body">
+                        <h3>Users</h3>
+                        <h4 class="display-4">
+                            <i class="fas fa-users"></i> 4
+                        </h4>
+                        <a href="/users" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
                 </div>
             </div>
         </div>

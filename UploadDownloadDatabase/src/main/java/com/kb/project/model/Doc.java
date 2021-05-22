@@ -17,35 +17,11 @@ public class Doc {
 	private String docType;
 	private String title;
 	private String category;
-	
-	public Doc(String title, String category, byte[] data) {
-		super();
-		this.title = title;
-		this.category = category;
-		this.data = data;
-	}
-
 	@Lob
 	private byte[] data;
 	
-	public Doc() {}
-
-//	public Doc(String docName, String docType, byte[] data) {
-//		super();
-//		this.docName = docName;
-//		this.docType = docType;
-//		this.data = data;
-//	}
-
-	public Doc(String docName, String docType, String title, String category, byte[] data) {
-		super();
-		this.docName = docName;
-		this.docType = docType;
-		this.title = title;
-		this.category = category;
-		this.data = data;
-	}
-
+	
+	
 	public String getTitle() {
 		return title;
 	}
@@ -64,6 +40,20 @@ public class Doc {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Doc() {
+		super();
+	}
+
+	public Doc(Integer id, String docName, String docType, String title, String category, byte[] data) {
+		super();
+		this.id = id;
+		this.docName = docName;
+		this.docType = docType;
+		this.title = title;
+		this.category = category;
+		this.data = data;
 	}
 
 	public void setId(Integer id) {

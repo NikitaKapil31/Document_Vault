@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kb.project.model.Doc;
 import com.kb.project.repository.DocRepository;
 
@@ -16,22 +19,25 @@ public class DocStorageService {
   @Autowired
   private DocRepository docRepository;
   
-  public String saveFile(String title, String category, MultipartFile file) throws IOException {
-	  String docname = file.getOriginalFilename();
-//	  Doc doc = new Doc(docname,file.getContentType(),,category, file.getBytes());
+  public Doc saveFile(MultipartFile file, String user) throws IOException {
 	  Doc doc = new Doc();
-	  doc.setDocName(docname);
+	  
+	  try {
+			doc = new ObjectMapper().readValue(user, Doc.class);
+		} catch (JsonMappingException e) {
+					e.printStackTrace();
+		} catch (JsonProcessingException e) {
+				e.printStackTrace();
+		} 
+		try {
+			doc.setData(file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	  doc.setDocName(file.getOriginalFilename());
 	  doc.setDocType(file.getContentType());
-	  doc.setTitle(title);
-	  doc.setCategory(category);
-	  doc.setData(file.getBytes());
-	  
-	  
-	  if(doc==null) 
-		return "Document not created";
-	  else
-		return "Employee created successfully";
-	  
+	  docRepository.save(doc); 
+	  return doc;
 	 
   }
   public Optional<Doc> getFile(Integer fileId) {
