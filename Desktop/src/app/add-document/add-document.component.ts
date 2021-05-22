@@ -34,8 +34,8 @@ export class AddDocumentComponent implements OnInit {
       //   this.message = 'Document not uploaded successfully';
       // }
       this.docservice.addDoc(adddoc).subscribe(data => {
-        alert(data.body);
-      this.router.navigate(['/about']);
+        alert(data);
+      this.router.navigate(['/']);
     });
   }
 
