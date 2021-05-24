@@ -10,12 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.PutMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,10 +36,10 @@ public class DocController {
 	@Autowired 
 	private DocStorageService docStorageService;
 		
+	//Create Doc
 	@PostMapping(value="/uploadFiles", consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
 	public Doc uploadMultipleFiles(@RequestParam("file") MultipartFile file,
     		@RequestParam("user") String user ) throws IOException, InvalidDetailsException {
-//			System.out.println("in controller");
 			Doc doc = docStorageService.saveFile(file,user);
 			if(doc!=null)
 	    	{
@@ -55,7 +57,7 @@ public class DocController {
 		return new ResponseEntity<Response>( new Response(e.getMessage()),HttpStatus.OK);
 	}
 
-	
+	//Get Particular Doc data
 	@GetMapping("/getFile/{fileId}")
 	public ResponseEntity<ByteArrayResource> getDocById(@PathVariable Integer fileId){
 		Doc doc = docStorageService.getFile(fileId).get();
@@ -65,6 +67,7 @@ public class DocController {
 				.body(new ByteArrayResource(doc.getData()));
 	}
 	
+	//Get All Doc data
 	@GetMapping("/getFiles")
 	public ResponseEntity<List<Doc>> getDocs(){
 		System.out.println("in get con");
@@ -72,12 +75,33 @@ public class DocController {
 		return new ResponseEntity<List<Doc>>(doc,new HttpHeaders(),HttpStatus.OK);
 	}
 	
-//	//Updating Doc data
-//	@PutMapping("/UpdateEmployee")
-//	public ResponseEntity<String> UpdateEmployee(@RequestBody Employee emp)
-//	{
-//		String message= serviceobj.UpdateEmployee(emp);
-//		return new ResponseEntity<String>(message,new HttpHeaders(),HttpStatus.OK);
-//	}
+	//Updating Doc data
+	
+	@PutMapping("/UpdateDoc")
+	public Doc updateDoc(@RequestParam("file") MultipartFile file,
+    		@RequestParam("user") String user ) throws IOException, InvalidDetailsException {
+			Doc doc = docStorageService.saveFile(file,user);
+			if(doc!=null)
+	    	{
+	    		return doc;
+	    	}
+	    	else
+	    	{
+	    		throw new InvalidDetailsException("Document Not uploaded");
+	    	}
+	}
+	
+	//Deleting Doc data
+	@DeleteMapping("/DeleteDoc/{id}")
+	public ResponseEntity<String> delDoc(@PathVariable("id") int id) 
+	{
+		String message= docStorageService.deleteDoc(id);
+		return new ResponseEntity<String>(message,new HttpHeaders(),HttpStatus.OK);
+	}
+	
+	@GetMapping("/getCount")
+	public int count() {
+		return docStorageService.countDoc();
+	}
 	
 }

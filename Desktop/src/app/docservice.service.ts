@@ -14,36 +14,46 @@ export class DocserviceService {
     console.log("in service get docs" + id);
     return this.httpService.get("http://localhost:8777/doc/getFile/" + id, {
       responseType: 'blob'
-  });
-}
+    });
+  }
 
   public addDoc(formdata: FormData): Observable<any> {
     console.log("in service add");
     console.log(formdata);
     return this.httpService.post("http://localhost:8777/doc/uploadFiles", formdata, { observe: 'response' });
-      
+
   }
 
-  public getAllDocs(){
+  public getAllDocs() {
     console.log("in getall service");
     return this.httpService.get<Docs[]>('http://localhost:8777/doc/getFiles');
   }
 
-  public onUpdate(updateDocs: Docs) {
+  public onUpdate(formdata: FormData) {
     console.log("ins service update");
-    const headers = new HttpHeaders().set('Content_Type', 'text/plain ;charset=utf-8');
-    return this.httpService.put("http://localhost:8586/employees/UpdateEmployee", updateDocs, { headers, responseType: 'text' });
+    return this.httpService.put("http://localhost:8777/doc/UpdateDoc", formdata, { observe: 'response' });
   }
 
-  public update(updateDocs: Docs) {
-    this.updateDocs = updateDocs;
+  // public update(updateDocs: Docs) {
+  //   this.updateDocs = updateDocs;
+  // }
+  // public updateMethod() {
+  //   return this.updateDocs;
+  // }
+
+
+  public delete(id: number) {
+    console.log("in service delete");
+    const headers = new HttpHeaders().set('Content_Type', 'text/plain ;charset=utf-8');
+    return this.httpService.delete("http://localhost:8777/doc/DeleteDoc/" + id, { headers, responseType: 'text' });
   }
-  public updateMethod() {
-    return this.updateDocs;
+
+  public count() {
+    console.log("in service count");
+    const headers = new HttpHeaders().set('Content_Type', 'text/plain ;charset=utf-8');
+    return this.httpService.get("http://localhost:8777/doc/getCount");
   }
 }
-
- 
 
 export class Response {
   message: string;
@@ -57,8 +67,8 @@ export class Docs {
   category: string;
   docName: string;
   docType: string;
-  docData:string
-  constructor(id: number, title: string, category: string, docName: string, docType: string, docData : string) {
+  docData: string
+  constructor(id: number, title: string, category: string, docName: string, docType: string, docData: string) {
     this.id = id;
     this.title = title;
     this.category = category;

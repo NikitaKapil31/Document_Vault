@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Docs, DocserviceService } from '../docservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,42 +8,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private httpClient: HttpClient) { }
-  ngOnInit(): void {
 
+  count : number;
+  docs : Docs[];
+
+  constructor(private docservice: DocserviceService, private router: Router) { }
+  ngOnInit(): any {
+    this.docservice.getAllDocs().subscribe(
+      response => this.handleSuccessfulResponse(response),
+    );
+    
+  }
+  handleSuccessfulResponse(response) {
+    this.docs = response;
   }
 
-  selectedFile: File;
-  retrievedFile: any;
-  base64Data: any;
-  retrieveResonse: any;
-  message: string;
-  FileId: any;
+  getDocs(docs: Docs) {
+    this.docservice.getDoc(docs.id).subscribe(
+      (blob => saveAs(blob, docs.docName))
+    );
+  }
+
+delete(deleteDoc: Docs): any {
+var selction = confirm("Are you sure !!")
+if (selction == true) {
+  this.docs.splice(this.docs.indexOf(deleteDoc), 1);
+  this.docservice.delete(deleteDoc.id).subscribe(data => {
+    alert(data);
+  });
+}
+this.router.navigate(['/dashboard']);
+  }
 
  
-
-  getFiles(){
-    this.httpClient.get('http://localhost:8777/doc/getFiles')
-      .subscribe(
-        res => {
-          console.log(res);
-          // this.retrieveResonse = res;
-          // this.base64Data = this.retrieveResonse.picByte;
-          // this.retrievedFile = 'data:image/png;base64,' + this.base64Data;
-        }
-      );
-  }
-  //Gets called when the user clicks on retieve image button to get the image from back end
-  getImage() {
-    //Make a call to Spring Boot to get the Image Bytes.
-    this.httpClient.get('http://localhost:8777/doc/getFile/' + this.FileId)
-      .subscribe(
-        res => {
-          console.log(res);
-          // this.retrieveResonse = res;
-          // this.base64Data = this.retrieveResonse.picByte;
-          // this.retrievedFile = 'data:image/png;base64,' + this.base64Data;
-        }
-      );
-  }
+ 
 }

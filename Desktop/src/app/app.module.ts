@@ -15,7 +15,6 @@ import { CategoriesComponent } from './categories/categories.component';
 import { UsersComponent } from './users/users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
-import { DetailsComponent } from './details/details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -39,7 +38,6 @@ import { UpdateDocumentComponent } from './update-document/update-document.compo
     UsersComponent,
     ProfileComponent,
     SettingsComponent,
-    DetailsComponent,
     NavbarComponent,
     SidebarComponent,
     SignUpComponent,

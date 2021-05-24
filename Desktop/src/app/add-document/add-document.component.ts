@@ -10,7 +10,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AddDocumentComponent implements OnInit {
   reactiveForm: FormGroup;
-  id: number;
   title: string;
   category: string;
   public file: any = File;
@@ -23,7 +22,6 @@ export class AddDocumentComponent implements OnInit {
 
   ngOnInit() {
     this.reactiveForm = new FormGroup({
-      id: new FormControl(),
       title: new FormControl(),
       category: new FormControl()
     });
@@ -44,17 +42,18 @@ export class AddDocumentComponent implements OnInit {
       this.filestatus=data;
       if (this.filestatus.status === 200) {
           this.message = 'Document uploaded successfully';
+          this.router.navigate(['/dashboard']);
         } else {
           this.message = 'Document not uploaded successfully';
-
-        this.router.navigate(['app-dashboard'])
       }
-
     },
       error => {
-        this.message = "*all fields are required";
-      }
+        this.message = "Make sure you filled all entry or uploaded file of supported format";
+      }      
     );
+    
+  }
+  reset() {
 
   }
 }

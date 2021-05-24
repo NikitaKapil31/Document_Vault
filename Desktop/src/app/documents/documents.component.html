@@ -70,6 +70,19 @@
         </div>
     </header>
 
+    <!-- ACTIONS -->
+    <!-- <section id="actions" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/dashboard" class="btn btn-light btn-block">
+                        <i class="fas fa-arrow-left"></i> Back To Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
     <!-- SEARCH -->
     <section id="search" class="py-4 mb-4 bg-light">
         <div class="container">
@@ -90,60 +103,20 @@
     <section id="data">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Latest Documents</h4>
+                            <h4>All Documents</h4>
                         </div>
-                        <table class="table table-striped">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Date</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>One</td>
-                                    <td>image</td>
-                                    <td>May 14 2021</td>
-                                    <td>
-                                        <a href="details.html" class="btn btn-secondary">
-                                            <i class="fas fa-angle-double-right"></i> Details
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Two</td>
-                                    <td>Document</td>
-                                    <td>May 14 2021</td>
-                                    <td>
-                                        <a href="details.html" class="btn btn-secondary">
-                                            <i class="fas fa-angle-double-right"></i> Details
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Three</td>
-                                    <td>Video</td>
-                                    <td>May 14 2021</td>
-                                    <td>
-                                        <a href="details.html" class="btn btn-secondary">
-                                            <i class="fas fa-angle-double-right"></i> Details
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                   
-                                    <!-- PAGINATION -->
-                                    <nav class="ml-4">
+                            <app-list-document></app-list-document>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGINATION -->
+    <!-- <nav class="ml-4">
                                         <ul class="pagination">
                                             <li class="page-item disabled">
                                                 <a href="#" class="page-link">Previous</a>
@@ -161,17 +134,12 @@
                                                 <a href="#" class="page-link">Next</a>
                                             </li>
                                         </ul>
-                                    </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                                    </nav> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-    
+
 
 
     <script>

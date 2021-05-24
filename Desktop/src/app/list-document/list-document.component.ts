@@ -30,10 +30,21 @@ export class ListDocumentComponent implements OnInit {
   handleSuccessfulResponse(response) {
     this.docs = response;
   }
-  update(updateDocs: Docs) {
-    this.docservice.update(updateDocs);
-    this.router.navigate(['/details']); //updating the employee
+  delete(deleteDoc: Docs): any {
+    var selction = confirm("Are you sure !!")
+    if (selction == true) {
+      this.docs.splice(this.docs.indexOf(deleteDoc), 1);
+      this.docservice.delete(deleteDoc.id).subscribe(data => {
+        alert(data);
+      });
+    }
+    this.router.navigate(['/dashboard']);
   }
+
+  updateDoc(updateDoc: Docs): any {
+    this.router.navigate(['/update-component'], { state: { updateDoc } });
+  }
+  
  
 }
 

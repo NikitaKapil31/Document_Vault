@@ -8,6 +8,13 @@ import java.util.Optional;
 public interface ServiceInterface {
 	
     Doc saveFile(MultipartFile file);
+    
     Optional<Doc> getFile(Integer fileId);
+    
     List<Doc> getFiles();
+    
+    Doc updateDoc(Doc doc);
+    
+    String deleteDoc(int id);
+    
 }
