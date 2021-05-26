@@ -10,7 +10,7 @@ export class MainComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   selectedFile: File;

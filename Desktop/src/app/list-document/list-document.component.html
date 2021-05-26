@@ -1,0 +1,42 @@
+<div style="overflow-x: auto; margin-bottom: 2%;">
+    <table class="table table-striped">
+        <thead class="thead-dark" style="text-align: center;">
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>CATEGORY</th>
+                <th>DOCNAME</th>
+                <th>DOCTYPE</th>
+                <th>DOCDATA</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of docs" style="text-align: center;">
+                <td> {{d.id}} </td>
+                <td> {{d.title}} </td>
+                <td> {{d.category}} </td>
+                <td> {{d.docName}}</td>
+                <td> {{d.docType}}</td>
+                <td>
+                    <button class="btn btn-info" (click)=getDocs(d)>
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </td>
+                <td>
+                    <i class="fas fa-trash" (click)=delete(d)></i>
+                </td>
+                <td>
+                    <a routerLink="/update-document"><i class="fas fa-edit" (click)="updateDoc(d)"></i></a>
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="docs.length === 0">
+    <h5 style="text-align:center;"> There are no documents to display, please add the documents! </h5>
+</div>

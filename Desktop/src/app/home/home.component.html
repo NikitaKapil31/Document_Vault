@@ -1,4 +1,3 @@
-<!-- <p>home works!</p> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,41 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
         integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="home.component.css">
     <title>Document Vault</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container">
-            <img src="img/logo.png" width="50" height="50" alt="">
-            <a href="index.html" class="navbar-brand">&emsp;Document Vault</a>
-
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a routerLink="/home" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/about-us" class="nav-link">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/contact" class="nav-link">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/main" class="nav-link">Main Page</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <app-navbar></app-navbar>
     <section id="showcase">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -57,7 +28,7 @@
                             <h1 class="display-3">Register</h1>
                             <p class="lead">New User? Create your account easily register using email or phone number.
                             </p>
-                            <a href="#" class="btn btn-danger btn-lg">Sign Up Now</a>
+                            <a routerLink="/sign-in" class="btn btn-danger btn-lg">Sign Up Now</a>
                         </div>
                     </div>
                 </div>
@@ -67,7 +38,7 @@
                         <div class="carousel-caption d-none d-sm-block mb-5">
                             <h1 class="display-3">Existing User?</h1>
                             <p class="lead">Login here.Or create New Account.</p>
-                            <a href="#" class="btn btn-primary btn-lg">Login</a>
+                            <a routerLink="/sign-in" class="btn btn-primary btn-lg">Login</a>
                         </div>
                     </div>
                 </div>
@@ -77,17 +48,17 @@
                         <div class="carousel-caption d-none d-sm-block text-right mb-5">
                             <h1 class="display-3">FAQ's</h1>
                             <p class="lead">Having trouble check FAQ's or contact us.</p>
-                            <a href="#" class="btn btn-success btn-lg">Learn More</a>
+                            <a routerLink="/faq" class="btn btn-success btn-lg">Learn More</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+            <a href="#myCarousel" data-slide="prev" class="carousel-control-prev" role="button">
                 <span class="carousel-control-prev-icon"></span>
             </a>
 
-            <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+            <a href="#myCarousel" data-slide="next" class="carousel-control-next" role="button">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -104,7 +75,7 @@
                     <p>Your data is safe and secured. Use your credentials to get your data.</p>
                 </div>
                 <div class="col-md-4 mb-4 text-center">
-                    <i class="fas fa-cloud fa-3x mb-2"></i>
+                    <em class="fas fa-cloud fa-3x mb-2"></em>
                     <h3>Data</h3>
                     <p>Upload your data and retrieve whenever and wherever you want.</p>
                 </div>
@@ -139,10 +110,10 @@
                 <div class="col-md-6 align-self-center">
                     <h1 id="dv">DOCUMENT VAULT</h1>
                     <p>Document Vault allows the user to keep .</p>
-                    <a href="about.html" class="btn btn-outline-danger btn-lg">Learn More</a>
+                    <a routerLink="/about-us" class="btn btn-outline-danger btn-lg">Learn More</a>
                 </div>
                 <div class="col-md-6">
-                    <img src="img/laptop.jpg" alt="" class="img-fluid">
+                    <img src="../../assets/Images/laptop.jpg" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -156,7 +127,7 @@
                     <div class="container p-5">
                         <a href="#" class="video" data-video="https://www.youtube.com/" data-toggle="modal"
                             data-target="#videoModal">
-                            <i class="fas fa-play fa-3x"></i>
+                            <em class="fas fa-play fa-3x"></em>
                         </a>
                         <h1>See What We Do</h1>
                     </div>
@@ -190,34 +161,21 @@
                     <button class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
-                    <iframe src="" frameborder="0" height="350" width="100%" allowfullscreen></iframe>
+                    <iframe src="" height="350" width="100%" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-
     <script>
-        // Get the current year for the copyright
-        $('#year').text(new Date().getFullYear());
-
-        // Configure Slider
+       // Configure Slider
+        $(document).ready(function () {
         $('.carousel').carousel({
-            interval: 6000,
+            interval: 20,
+            cycle: true,
             pause: 'hover'
         });
+    });
 
         // Lightbox Init
         $(document).on('click', '[data-toggle="lightbox"]', function (event) {
