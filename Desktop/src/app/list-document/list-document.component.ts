@@ -12,6 +12,8 @@ import { saveAs } from 'file-saver';
 export class ListDocumentComponent implements OnInit {
   message: string;
   docs : Docs[];
+  doclist: any;
+  searchValue: string;
   constructor(private docservice: DocserviceService, private router: Router) {
   }
 
@@ -41,10 +43,18 @@ export class ListDocumentComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
-  updateDoc(updateDoc: Docs): any {
-    this.router.navigate(['/update-component'], { state: { updateDoc } });
-  }
+  // updateDoc(updateDoc: Docs): any {
+  //   this.router.navigate(['/update-component'], { state: { updateDoc } });
+  // }
   
+  updateDoc(id: number) {
+    this.docservice.getDoc(id)
+      .subscribe(
+        data => {
+          this.doclist = data
+        },
+        error => console.log(error));
+  }
  
 }
 

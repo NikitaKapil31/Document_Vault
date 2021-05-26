@@ -7,51 +7,58 @@
                     <span>&times;</span>
                 </button>
             </div>
-            <form class="form-horizontal" [formGroup]="reactiveForm">
-                <div class="modal-body">
+            <div [hidden]="submitted">
+                <form [formGroup]="reactiveForm">
+                    <div class="modal-body">
 
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" id="title" class="form-control" formControlName="title" required>
-
-                        <!-- <div *ngIf='docTitleRef.errors && docTitleRef.touched' class="alert alert-danger">
-
-                            <div [hidden]='!docTitleRef.errors.required'> Provide Document Title </div> -->
-
-                        <!-- </div> -->
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <select name="category" formControlName="category" class="form-control">
-                            <option value="images">Images</option>
-                            <option value="documents">Documents</option>
-                            <option value="videos">Videos</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Upload Image</label>
-                        <!-- <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" (change)="onFileChanged($event)">
-                            <label for="image" class="custom-file-label">Choose File</label>
-                        </div> -->
-                        <div class="container row">
-                            <div class="col-md-6">
-                                <input type="file" name="file" class="form-control" (change)="onFileChanged($event)">
-
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" class="form-control" 
+                                formControlName="title"  data-toggle="tooltip" placeholder="Enter title"  required />
                             </div>
                         </div>
-                        <small class="form-text text-muted">Max Size 3mb</small>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label for="category">Category</label>
+                            <select name="category" formControlName="category" class="form-control" ngModel="images" ng-required=true>
+                                <option value="images" >Images</option>
+                                <option value="documents">Documents</option>
+                                <option value="others">Others</option>
+                                <!-- <option value="videos">Videos</option> -->
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Upload Image</label><small class="form-text text-muted">Max Size 3MB</small>
+
+                            <div class="container row">
+                                <div class="col-md-12">
+                                    <input type="file" name="file" class="form-control" (change)="onFileChanged($event)"
+                                        required>
+
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <!-- <div class="status" style="text-align:center;color: red;font-weight: bold;">{{message}}</div> -->
+
+
                     </div>
-                    <div class="status" style="text-align:center;color: red;font-weight: bold;">{{message}}</div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" [disabled]="!reactiveForm.valid" (click)="saveDoc(reactiveForm)">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div [hidden]="!submitted">
+                <h6 style="text-align:center ;">{{message}}</h6>
+                <button style="margin: 5% 30% 10% 40%;" (click)="addDocForm()" class='btn btn-info'>Add
+                    Documents Again</button>
 
 
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-success" (click)="saveDoc(reactiveForm)" >
-                    <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-
-            </form>
+            </div>
         </div>
     </div>
-</div>

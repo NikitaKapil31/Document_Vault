@@ -23,7 +23,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { FaqComponent } from './faq/faq.component';
 import { ListDocumentComponent } from './list-document/list-document.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
-import { UpdateDocumentComponent } from './update-document/update-document.component';
+import { SearchfilterPipe } from './searchfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { UpdateDocumentComponent } from './update-document/update-document.compo
     FaqComponent,
     ListDocumentComponent,
     AddDocumentComponent,
-    UpdateDocumentComponent
+    SearchfilterPipe
   ],
   imports: [
     BrowserModule,

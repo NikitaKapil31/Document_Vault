@@ -114,6 +114,7 @@
                                     <th>CATEGORY</th>
                                     <th>DOCNAME</th>
                                     <th>DOCTYPE</th>
+                                    <th>CREATED AT</th>
                                     <th>DOCDATA</th>
                                     <th></th>
                                     <th></th>
@@ -126,6 +127,7 @@
                                     <td> {{d.category}} </td>
                                     <td> {{d.docName}}</td>
                                     <td> {{d.docType}}</td>
+                                    <td> {{d.createdAt | date : 'medium'}} </td>
                                     <td>
                                         <button class="btn btn-info" (click)=getDocs(d)>
                                             <i class="fas fa-download"></i> Download
@@ -133,11 +135,7 @@
                                     </td>
                                     <td>
                                         <i class="fas fa-trash" (click)=delete(d)></i>
-                                    </td>
-                                    <td>
-                                        <a routerLink="/update-document"><i class="fas fa-edit"></i></a>
-                                    </td>
-                        
+                                    </td>                        
                                 </tr>
                         
                             </tbody>
