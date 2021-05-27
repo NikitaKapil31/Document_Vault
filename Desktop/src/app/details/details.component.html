@@ -35,21 +35,27 @@
 
 
 <!-- SEARCH -->
-<section id="search" class="py-4 mb-4 bg-light">
+
+<section id="actions" class="py-4 mb-4 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 ml-auto">
+            <div class="col-md-6">
+                <a routerLink="/dashboard" class="btn btn-light btn-block">
+                    <i class="fas fa-arrow-left"></i> Back To Dashboard
+                </a>
+               
+            </div>
+            <div class="col-md-6">
                 <div class="input-group">
                     <input type="text" class="form-control" [(ngModel)] = "searchValue" placeholder="Search Documents...">
                     <div class="input-group-append">
                         <button class="btn btn-success">Search</button>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-</section>
-
+    </div>
+    </section>
 <!-- DATA -->
 <section id="data">
     <div class="container">

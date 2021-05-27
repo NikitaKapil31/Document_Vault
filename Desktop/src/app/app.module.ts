@@ -23,6 +23,7 @@ import { ListDocumentComponent } from './list-document/list-document.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
 import { SearchfilterPipe } from './searchfilter.pipe';
 import { DetailsComponent } from './details/details.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DetailsComponent } from './details/details.component';
     ListDocumentComponent,
     AddDocumentComponent,
     SearchfilterPipe,
-    DetailsComponent
+    DetailsComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,

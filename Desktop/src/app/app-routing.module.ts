@@ -15,6 +15,7 @@ import { ListDocumentComponent } from './list-document/list-document.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DetailsComponent } from './details/details.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 const routes: Routes = [
   { path : 'home', component : HomeComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'list-document', component: ListDocumentComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'settings', component: SettingsComponent },
-  { path: 'details', component: DetailsComponent }
+  { path: 'details', component: DetailsComponent },
+  { path: 'editprofile', component: EditprofileComponent }
 ];
 
 @NgModule({
