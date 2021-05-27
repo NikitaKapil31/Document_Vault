@@ -1,21 +1,54 @@
-<section id="actions" class="py-4 mb-4 bg-light">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>Details</title>
+</head>
+
+<body>
+    <!--<app-navbar></app-navbar>-->
+    <app-sidebar></app-sidebar>
+  
+    <!-- HEADER -->
+    <header id="main-header" class="py-2 bg-success text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>
+                        <i class="fas fa-list-alt"></i> Details
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>                          
+                   
+</body>
+
+
+
+
+
+
+<!-- SEARCH -->
+<section id="search" class="py-4 mb-4 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <a routerLink="/details" class="btn btn-info btn-block" style="color: white;">Details </a>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-6 ml-auto">
                 <div class="input-group">
                     <input type="text" class="form-control" [(ngModel)] = "searchValue" placeholder="Search Documents...">
                     <div class="input-group-append">
-                        <button class="btn btn-info">Search</button>
+                        <button class="btn btn-success">Search</button>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
-    </div>
-    </section>
-
+</section>
 
 <!-- DATA -->
 <section id="data">
@@ -30,32 +63,25 @@
                         <table class="table table-striped">
                             <thead class="thead-dark" style="text-align: center;">
                                 <tr>
-                                   
+                                    <th>ID</th>
                                     <th>TITLE</th>
+                                    <th>CATEGORY</th>
                                     <th>DOCNAME</th>
+                                    <th>DOCTYPE</th>
                                     <th>CREATED AT</th>
+                                    <th>DOCDATA</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let d of docs | searchfilter : searchValue" style="text-align: center;">
-                                   
+                                    <td> {{d.id}} </td>
                                     <td> {{d.title}} </td>
+                                    <td> {{d.category}} </td>
                                     <td> {{d.docName}}</td>
+                                    <td> {{d.docType}}</td>
                                     <td> {{d.createdAt | date : 'full'}} </td>
-                                    <td>
-                                        <button class="btn btn-info" (click)=getDocs(d)>
-                                            <i class="fas fa-download"></i> Download
-                                        </button>
-                                    </td>
-                                    
-                                    <td>
-                                        <i class="fas fa-trash" (click)=delete(d)></i>
-                                    </td>
-                                    <!-- <td>
-                                        <a routerLink="/update-document"><i class="fas fa-edit"
-                                                (click)="updateDoc(d.id)"></i></a>
-                                    </td> -->
-
                                 </tr>
 
                             </tbody>
@@ -72,3 +98,5 @@
         </div>
     </div>
 </section>
+
+</html>
