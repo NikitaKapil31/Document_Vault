@@ -67,16 +67,18 @@
                                     <th>DOCNAME</th>
                                    
                                     <th>CREATED AT</th>
+                                    <th>DOWNLOAD</th>
+                                    <th>DELETE</th>
                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let d of (docs | slice : docs.length - 3).reverse()" style="text-align: center;">
-                                    <td> {{d.id}} </td>
+                                   
                                     <td> {{d.title}} </td>
-                                    <td> {{d.category}} </td>
+                                    
                                     <td> {{d.docName}}</td>
-                                    <td> {{d.docType}}</td>
+                                
                                     <td> {{d.createdAt | date : 'medium'}} </td>
                                     <td>
                                         <button class="btn btn-info" (click)=getDocs(d)>
