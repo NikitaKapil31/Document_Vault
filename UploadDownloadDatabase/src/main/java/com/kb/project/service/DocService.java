@@ -13,12 +13,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kb.project.model.Doc;
+import com.kb.project.repository.CategoryRepository;
 import com.kb.project.repository.DocRepository;
 
 @Service
 public class DocService {
   @Autowired
   private DocRepository docRepository;
+  private CategoryRepository catRepository;
   
   
   public Doc saveFile(MultipartFile file, String user) throws IOException {
@@ -82,4 +84,7 @@ public class DocService {
 	  List<Doc> doc = docRepository.findAll();
 	  return doc.size();
   }
+  
+  
+  
 }
