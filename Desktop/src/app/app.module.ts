@@ -8,10 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentsComponent } from './documents/documents.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { UsersComponent } from './users/users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -24,6 +22,7 @@ import { FaqComponent } from './faq/faq.component';
 import { ListDocumentComponent } from './list-document/list-document.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
 import { SearchfilterPipe } from './searchfilter.pipe';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +30,8 @@ import { SearchfilterPipe } from './searchfilter.pipe';
     HomeComponent,
     ContactComponent,
     AboutUsComponent,
-    MainComponent,
     DashboardComponent,
     DocumentsComponent,
-    CategoriesComponent,
     UsersComponent,
     ProfileComponent,
     SettingsComponent,
@@ -46,7 +43,8 @@ import { SearchfilterPipe } from './searchfilter.pipe';
     FaqComponent,
     ListDocumentComponent,
     AddDocumentComponent,
-    SearchfilterPipe
+    SearchfilterPipe,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

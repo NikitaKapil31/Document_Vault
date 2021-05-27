@@ -9,56 +9,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
         integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <title>Admin panel</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
-    <app-navbar></app-navbar>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-        <div class="container">
-            <a href="/dashboard" class="navbar-brand">Document Vault</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item px-2">
-                        <a href="/dashboard" class="nav-link active">Dashboard</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/documents" class="nav-link">Documents</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/categories" class="nav-link">Categories</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="/users" class="nav-link">Users</a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown mr-3">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <i class="fas fa-user"></i> Welcome
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="/profile" class="dropdown-item">
-                                <em class="fas fa-user-circle"></em> Profile
-                            </a>
-                            <a href="/settings" class="dropdown-item">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/home" class="nav-link">
-                            <i class="fas fa-user-times"></i> Logout
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!--<app-navbar></app-navbar>-->
+    <app-sidebar></app-sidebar>   
 
     <!-- HEADER -->
     <header id="main-header" class="py-2 bg-info text-white">
@@ -66,7 +22,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1>
-                        <i class="fas fa-cog"></i> Dashboard
+                        <i class="fas fa-laptop"></i> Dashboard
                     </h1>
                 </div>
             </div>
@@ -77,18 +33,14 @@
     <section id="actions" class="py-4 mb-4 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <a href="#" class="btn btn-info btn-block" data-toggle="modal" data-target="#addPostModal">
                         <i class="fas fa-plus"></i> Add Documents
                     </a>
                 </div>
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
-                        <i class="fas fa-plus"></i> Add Category
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+               
+                <div class="col-md-6">
+                    <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addUserModal">
                         <i class="fas fa-plus"></i> Add User
                     </a>
                 </div>
@@ -109,24 +61,24 @@
                         <table class="table table-striped ">
                             <thead class="thead-dark" style="text-align: center;">
                                 <tr>
-                                    <th>ID</th>
+                                    
                                     <th>TITLE</th>
-                                    <th>CATEGORY</th>
+                                    
                                     <th>DOCNAME</th>
-                                    <th>DOCTYPE</th>
+                                   
                                     <th>CREATED AT</th>
-                                    <th>DOCDATA</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>DOWNLOAD</th>
+                                    <th>DELETE</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let d of (docs | slice : docs.length - 3).reverse()" style="text-align: center;">
-                                    <td> {{d.id}} </td>
+                                   
                                     <td> {{d.title}} </td>
-                                    <td> {{d.category}} </td>
+                                    
                                     <td> {{d.docName}}</td>
-                                    <td> {{d.docType}}</td>
+                                
                                     <td> {{d.createdAt | date : 'medium'}} </td>
                                     <td>
                                         <button class="btn btn-info" (click)=getDocs(d)>
@@ -152,7 +104,7 @@
                         <div class="card-body">
                             <h3>Document count</h3>
                             <h4 class="display-4">
-                                <i class="fas fa-pencil-alt"></i> {{docs.length}}
+                                <i class="fas fa-file-alt"></i> {{docs.length}}
 
                             </h4>
                             <a href="/documents" class="btn btn-outline-light btn-sm">View</a>
@@ -160,16 +112,6 @@
                     </div>
 
                     <div class="card text-center bg-success text-white mb-3">
-                        <div class="card-body">
-                            <h3>Categories</h3>
-                            <h4 class="display-4">
-                                <i class="fas fa-folder"></i> 4
-                            </h4>
-                            <a href="/categories" class="btn btn-outline-light btn-sm">View</a>
-                        </div>
-                    </div>
-
-                    <div class="card text-center bg-warning text-white mb-3">
                         <div class="card-body">
                             <h3>Users</h3>
                             <h4 class="display-4">
@@ -186,36 +128,12 @@
 
     <!-- ADD POST MODAL -->
     <app-add-document></app-add-document>
-    <!-- ADD CATEGORY MODAL -->
-    <div class="modal fade" id="addCategoryModal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Add Category</h5>
-                    <button class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- ADD USER MODAL -->
     <div class="modal fade" id="addUserModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-warning text-white">
+                <div class="modal-header bg-success text-white">
                     <h5 class="modal-title">Add User</h5>
                     <button class="close" data-dismiss="modal">
                         <span>&times;</span>
@@ -242,25 +160,12 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-warning" data-dismiss="modal">Save Changes</button>
+                    <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
-
-    <script>
-        // Get the current year for the copyright
-        $('#year').text(new Date().getFullYear());
-
-        CKEDITOR.replace('editor1');
-    </script>
+    
 </body>
 
 </html>
