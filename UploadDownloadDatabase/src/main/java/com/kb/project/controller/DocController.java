@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,26 +67,12 @@ public class DocController {
 	//Get All Doc data
 	@GetMapping("/getFiles")
 	public ResponseEntity<List<Doc>> getDocs(){
-		System.out.println("in get con");
+//		System.out.println("in get con");
 		List<Doc> doc = docStorageService.getFiles();
 		return new ResponseEntity<List<Doc>>(doc,new HttpHeaders(),HttpStatus.OK);
 	}
 	
-	//Updating Doc data	
-	@PostMapping("/UpdateDoc/{id}")
-	public Doc updateDoc(@RequestParam("file") MultipartFile file,
-    		@RequestParam("user") String user, @PathVariable("id") int id ) throws IOException, InvalidDetailsException {
-			Doc doc = docStorageService.updateDoc(file,user,id);
-			if(doc!=null)
-	    	{
-	    		return doc;
-	    	}
-	    	else
-	    	{
-	    		throw new InvalidDetailsException("Document Not uploaded");
-	    	}
-	}
-	
+		
 	//Deleting Doc data
 	@DeleteMapping("/DeleteDoc/{id}")
 	public ResponseEntity<String> delDoc(@PathVariable("id") int id) 
@@ -98,9 +81,5 @@ public class DocController {
 		return new ResponseEntity<String>(message,new HttpHeaders(),HttpStatus.OK);
 	}
 	
-	@GetMapping("/getCount")
-	public int count() {
-		return docStorageService.countDoc();
-	}
 	
 }
