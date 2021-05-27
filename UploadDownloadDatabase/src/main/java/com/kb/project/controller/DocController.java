@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kb.project.exception.InvalidDetailsException;
 import com.kb.project.model.Doc;
 import com.kb.project.model.Response;
-import com.kb.project.service.DocStorageService;
+import com.kb.project.service.DocService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -34,7 +34,7 @@ import com.kb.project.service.DocStorageService;
 public class DocController {
 
 	@Autowired 
-	private DocStorageService docStorageService;
+	private DocService docStorageService;
 		
 	//Create Doc
 	@PostMapping(value="/uploadFiles", consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -75,12 +75,11 @@ public class DocController {
 		return new ResponseEntity<List<Doc>>(doc,new HttpHeaders(),HttpStatus.OK);
 	}
 	
-	//Updating Doc data
-	
-	@PutMapping("/UpdateDoc")
+	//Updating Doc data	
+	@PostMapping("/UpdateDoc/{id}")
 	public Doc updateDoc(@RequestParam("file") MultipartFile file,
-    		@RequestParam("user") String user ) throws IOException, InvalidDetailsException {
-			Doc doc = docStorageService.saveFile(file,user);
+    		@RequestParam("user") String user, @PathVariable("id") int id ) throws IOException, InvalidDetailsException {
+			Doc doc = docStorageService.updateDoc(file,user,id);
 			if(doc!=null)
 	    	{
 	    		return doc;

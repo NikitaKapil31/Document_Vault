@@ -1,10 +1,14 @@
 package com.kb.project.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -17,11 +21,29 @@ public class Doc {
 	private String docType;
 	private String title;
 	private String category;
+	
+	@Column(name = "created_at")
+	private Date createdAt;
 	@Lob
 	private byte[] data;
 	
 	
+	@PrePersist
+	  void createdAt() {
+	    this.createdAt = new Date();
+	  }
 	
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
 	public String getTitle() {
 		return title;
 	}
