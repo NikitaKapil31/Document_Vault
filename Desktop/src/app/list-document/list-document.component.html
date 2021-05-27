@@ -1,42 +1,76 @@
-<div style="overflow-x: auto; margin-bottom: 2%;">
-    <table class="table table-striped">
-        <thead class="thead-dark" style="text-align: center;">
-            <tr>
-                <th>ID</th>
-                <th>TITLE</th>
-                <th>CATEGORY</th>
-                <th>DOCNAME</th>
-                <th>DOCTYPE</th>
-                <th>DOCDATA</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let d of docs" style="text-align: center;">
-                <td> {{d.id}} </td>
-                <td> {{d.title}} </td>
-                <td> {{d.category}} </td>
-                <td> {{d.docName}}</td>
-                <td> {{d.docType}}</td>
-                <td>
-                    <button class="btn btn-info" (click)=getDocs(d)>
-                        <i class="fas fa-download"></i> Download
-                    </button>
-                </td>
-                <td>
-                    <i class="fas fa-trash" (click)=delete(d)></i>
-                </td>
-                <td>
-                    <a routerLink="/update-document"><i class="fas fa-edit" (click)="updateDoc(d)"></i></a>
-                </td>
+<section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a routerLink="/details" class="btn btn-info btn-block" style="color: white;">Document Details </a>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" [(ngModel)] = "searchValue" placeholder="Search Documents...">
+                    <div class="input-group-append">
+                        <button class="btn btn-info">Search</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </div>
+    </section>
 
-            </tr>
 
-        </tbody>
-    </table>
-</div>
+<!-- DATA -->
+<section id="data">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>All Documents</h4>
+                    </div>
+                    <div style="overflow-x: auto; margin-bottom: 2%;">
+                        <table class="table table-striped">
+                            <thead class="thead-dark" style="text-align: center;">
+                                <tr>
+                                   
+                                    <th>TITLE</th>
+                                    <th>DOCNAME</th>
+                                    <th>CREATED AT</th>
+                                    <th>DOWNLOAD</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let d of docs | searchfilter : searchValue" style="text-align: center;">
+                                   
+                                    <td> {{d.title}} </td>
+                                    <td> {{d.docName}}</td>
+                                    <td> {{d.createdAt | date : 'full'}} </td>
+                                    <td>
+                                        <button class="btn btn-info" (click)=getDocs(d)>
+                                            <i class="fas fa-download"></i> Download
+                                        </button>
+                                    </td>
+                                    
+                                    <td>
+                                        <i class="fas fa-trash" (click)=delete(d)></i>
+                                    </td>
+                                    <!-- <td>
+                                        <a routerLink="/update-document"><i class="fas fa-edit"
+                                                (click)="updateDoc(d.id)"></i></a>
+                                    </td> -->
 
-<div *ngIf="docs.length === 0">
-    <h5 style="text-align:center;"> There are no documents to display, please add the documents! </h5>
-</div>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div *ngIf="docs.length === 0">
+                        <h5 style="text-align:center;"> There are no documents to display, please add the documents!
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

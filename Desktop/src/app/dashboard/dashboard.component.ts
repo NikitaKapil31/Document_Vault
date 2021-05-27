@@ -15,9 +15,8 @@ export class DashboardComponent implements OnInit {
   constructor(private docservice: DocserviceService, private router: Router) { }
   ngOnInit(): any {
     this.docservice.getAllDocs().subscribe(
-      response => this.handleSuccessfulResponse(response),
+      response => this.handleSuccessfulResponse(response)
     );
-    
   }
   handleSuccessfulResponse(response) {
     this.docs = response;

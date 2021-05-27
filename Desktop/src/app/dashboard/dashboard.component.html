@@ -9,19 +9,20 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
         integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <title>Admin panel</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
     <!--<app-navbar></app-navbar>-->
-    <app-sidebar></app-sidebar>
+    <app-sidebar></app-sidebar>   
+
     <!-- HEADER -->
     <header id="main-header" class="py-2 bg-info text-white">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h1>
-                        <i class="fas fa-cog"></i> Dashboard
+                        <i class="fas fa-laptop"></i> Dashboard
                     </h1>
                 </div>
             </div>
@@ -32,12 +33,13 @@
     <section id="actions" class="py-4 mb-4 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <a href="#" class="btn btn-info btn-block" data-toggle="modal" data-target="#addPostModal">
                         <i class="fas fa-plus"></i> Add Documents
                     </a>
                 </div>
-                <div class="col-md-5">
+               
+                <div class="col-md-6">
                     <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addUserModal">
                         <i class="fas fa-plus"></i> Add User
                     </a>
@@ -59,23 +61,25 @@
                         <table class="table table-striped ">
                             <thead class="thead-dark" style="text-align: center;">
                                 <tr>
-                                    <th>ID</th>
+                                    
                                     <th>TITLE</th>
-                                    <th>CATEGORY</th>
+                                    
                                     <th>DOCNAME</th>
-                                    <th>DOCTYPE</th>
-                                    <th>DOCDATA</th>
-                                    <th></th>
-                                    <th></th>
+                                   
+                                    <th>CREATED AT</th>
+                                    <th>DOWNLOAD</th>
+                                    <th>DELETE</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let d of (docs | slice : docs.length - 3).reverse()" style="text-align: center;">
-                                    <td> {{d.id}} </td>
+                                   
                                     <td> {{d.title}} </td>
-                                    <td> {{d.category}} </td>
+                                    
                                     <td> {{d.docName}}</td>
-                                    <td> {{d.docType}}</td>
+                                
+                                    <td> {{d.createdAt | date : 'medium'}} </td>
                                     <td>
                                         <button class="btn btn-info" (click)=getDocs(d)>
                                             <i class="fas fa-download"></i> Download
@@ -83,11 +87,7 @@
                                     </td>
                                     <td>
                                         <i class="fas fa-trash" (click)=delete(d)></i>
-                                    </td>
-                                    <td>
-                                        <a routerLink="/update-document"><i class="fas fa-edit"></i></a>
-                                    </td>
-                        
+                                    </td>                        
                                 </tr>
                         
                             </tbody>
@@ -104,7 +104,7 @@
                         <div class="card-body">
                             <h3>Document count</h3>
                             <h4 class="display-4">
-                                <i class="fas fa-pencil-alt"></i> {{docs.length}}
+                                <i class="fas fa-file-alt"></i> {{docs.length}}
 
                             </h4>
                             <a href="/documents" class="btn btn-outline-light btn-sm">View</a>
@@ -128,7 +128,7 @@
 
     <!-- ADD POST MODAL -->
     <app-add-document></app-add-document>
-   
+
     <!-- ADD USER MODAL -->
     <div class="modal fade" id="addUserModal">
         <div class="modal-dialog modal-lg">
@@ -165,5 +165,7 @@
             </div>
         </div>
     </div>
+    
 </body>
+
 </html>

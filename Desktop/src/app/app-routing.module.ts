@@ -12,9 +12,10 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
 import { ListDocumentComponent } from './list-document/list-document.component';
-import { UpdateDocumentComponent } from './update-document/update-document.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
+import { DetailsComponent } from './details/details.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 const routes: Routes = [
   { path : 'home', component : HomeComponent},
@@ -30,10 +31,10 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'add-document', component: AddDocumentComponent},
   { path: 'list-document', component: ListDocumentComponent},
-  { path: 'update-document', component: UpdateDocumentComponent },
   { path: 'profile', component: ProfileComponent},
-  { path: 'settings', component: SettingsComponent }
-
+  { path: 'settings', component: SettingsComponent },
+  { path: 'details', component: DetailsComponent },
+  { path: 'editprofile', component: EditprofileComponent }
 ];
 
 @NgModule({

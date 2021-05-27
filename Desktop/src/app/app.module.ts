@@ -21,8 +21,9 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { FaqComponent } from './faq/faq.component';
 import { ListDocumentComponent } from './list-document/list-document.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
-import { UpdateDocumentComponent } from './update-document/update-document.component';
-import { DashnavbarComponent } from './dashnavbar/dashnavbar.component';
+import { SearchfilterPipe } from './searchfilter.pipe';
+import { DetailsComponent } from './details/details.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,9 @@ import { DashnavbarComponent } from './dashnavbar/dashnavbar.component';
     FaqComponent,
     ListDocumentComponent,
     AddDocumentComponent,
-    UpdateDocumentComponent,
-    DashnavbarComponent
+    SearchfilterPipe,
+    DetailsComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,
