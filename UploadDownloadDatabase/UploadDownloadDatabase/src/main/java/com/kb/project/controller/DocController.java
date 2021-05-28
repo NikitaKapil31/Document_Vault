@@ -26,21 +26,22 @@ import com.kb.project.model.Response;
 import com.kb.project.service.DocService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(path = "doc")
+@CrossOrigin(origins = "http://localhost:4200")/**The list of allowed origins that be specific origins**/
+@RequestMapping(path = "doc")/** The path mapping URIs**/
 public class DocController {
 
 	@Autowired 
 	private DocService docStorageService;
 		
-	//Create Doc
-	@PostMapping(value="/uploadFiles", consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
+	//Create Documents
+	@PostMapping(value="/uploadFiles", consumes=MediaType.MULTIPART_FORM_DATA_VALUE)/** For mapping HTTP {@code POST} requests onto specific handler methods.**/
 	public Doc uploadMultipleFiles(@RequestParam("file") MultipartFile file,
     		@RequestParam("user") String user ) throws IOException, InvalidDetailsException {
-			Doc doc = docStorageService.saveFile(file,user);
+		/**indicates that a method parameter should be bound to a web request parameter.**/
+			Doc doc = docStorageService.saveFile(file,user);  //File and user will be saved
 			if(doc!=null)
 	    	{
-	    		return doc;
+	    		return doc;    //Returns Uploaded Document
 	    	}
 	    	else
 	    	{
@@ -54,31 +55,31 @@ public class DocController {
 		return new ResponseEntity<Response>( new Response(e.getMessage()),HttpStatus.OK);
 	}
 
-	//Get Particular Doc data
-	@GetMapping("/getFile/{fileId}")
+	//Get Particular Document data
+	@GetMapping("/getFile/{fileId}")             /**for mapping HTTP {@code GET} requests onto specific handler methods.**/
 	public ResponseEntity<ByteArrayResource> getDocById(@PathVariable Integer fileId){
 		Doc doc = docStorageService.getFile(fileId).get();
 		return ResponseEntity.ok()
 				.contentType(MediaType.parseMediaType(doc.getDocType()))
 				.header(HttpHeaders.CONTENT_DISPOSITION,"attachment:filename=\""+doc.getDocName()+"\"")
-				.body(new ByteArrayResource(doc.getData()));
+				.body(new ByteArrayResource(doc.getData()));//Particular document is displayed
 	}
 	
-	//Get All Doc data
+	//Get All Document data
 	@GetMapping("/getFiles")
 	public ResponseEntity<List<Doc>> getDocs(){
-//		System.out.println("in get con");
+		//System.out.println("in get console");
 		List<Doc> doc = docStorageService.getFiles();
-		return new ResponseEntity<List<Doc>>(doc,new HttpHeaders(),HttpStatus.OK);
+		return new ResponseEntity<List<Doc>>(doc,new HttpHeaders(),HttpStatus.OK);//List of all documents are displayed
 	}
 	
 		
-	//Deleting Doc data
-	@DeleteMapping("/DeleteDoc/{id}")
+	//Deleting Document data
+	@DeleteMapping("/DeleteDoc/{id}")    /**for mapping HTTP {@code DELETE} requests onto specific handler methods.**/
 	public ResponseEntity<String> delDoc(@PathVariable("id") int id) 
 	{
 		String message= docStorageService.deleteDoc(id);
-		return new ResponseEntity<String>(message,new HttpHeaders(),HttpStatus.OK);
+		return new ResponseEntity<String>(message,new HttpHeaders(),HttpStatus.OK);//Document deleted message will be displayed
 	}
 	
 	

@@ -38,19 +38,19 @@ public class DocService {
 	  doc.setDocName(file.getOriginalFilename());
 	  doc.setDocType(file.getContentType());
 	  docRepository.save(doc); 
-	  return doc;
+	  return doc;   //Save file
 	 
   }
   public Optional<Doc> getFile(Integer fileId) {
-	  return docRepository.findById(fileId);
+	  return docRepository.findById(fileId); //To get particular document
   }
   public List<Doc> getFiles(){
-	  return docRepository.findAll();
+	  return docRepository.findAll(); //To get list of documents
   }
     
   public String deleteDoc(int id) {
 		docRepository.deleteById(id);
-		return "Successfully Deleted!";
+		return "Successfully Deleted!"; //Delete the document
 	}
    
  

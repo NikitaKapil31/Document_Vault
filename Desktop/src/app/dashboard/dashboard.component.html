@@ -1,4 +1,3 @@
-<!-- <p>dashboard works!</p> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,13 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
         integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <title>Dashboard</title>
 </head>
 
 <body>
-    <!--<app-navbar></app-navbar>-->
-    <app-sidebar></app-sidebar>   
+    <app-dashnavbar></app-dashnavbar>
+    <app-sidebar></app-sidebar>
 
     <!-- HEADER -->
     <header id="main-header" class="py-2 bg-info text-white">
@@ -29,19 +27,14 @@
         </div>
     </header>
 
+
     <!-- ACTIONS -->
     <section id="actions" class="py-4 mb-4 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <a href="#" class="btn btn-info btn-block" data-toggle="modal" data-target="#addPostModal">
                         <i class="fas fa-plus"></i> Add Documents
-                    </a>
-                </div>
-               
-                <div class="col-md-6">
-                    <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addUserModal">
-                        <i class="fas fa-plus"></i> Add User
                     </a>
                 </div>
             </div>
@@ -58,114 +51,76 @@
                             <h4>Latest Documents</h4>
                         </div>
                         <div class="latest">
-                        <table class="table table-striped ">
-                            <thead class="thead-dark" style="text-align: center;">
-                                <tr>
-                                    
-                                    <th>TITLE</th>
-                                    
-                                    <th>DOCNAME</th>
-                                   
-                                    <th>CREATED AT</th>
-                                    <th>DOWNLOAD</th>
-                                    <th>DELETE</th>
-                                   
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let d of (docs | slice : docs.length - 3).reverse()" style="text-align: center;">
-                                   
-                                    <td> {{d.title}} </td>
-                                    
-                                    <td> {{d.docName}}</td>
-                                
-                                    <td> {{d.createdAt | date : 'medium'}} </td>
-                                    <td>
-                                        <button class="btn btn-info" (click)=getDocs(d)>
-                                            <i class="fas fa-download"></i> Download
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-trash" (click)=delete(d)></i>
-                                    </td>                        
-                                </tr>
-                        
-                            </tbody>
-                        </table>
+                            <table class="table table-striped ">
+                                <thead class="thead-dark" style="text-align: center;">
+                                    <tr>
+
+                                        <th>TITLE</th>
+
+                                        <th>DOCNAME</th>
+
+                                        <th>CREATED AT</th>
+                                        <th>DOWNLOAD</th>
+                                        <th>DELETE</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let d of (docs | slice : docs.length - 3).reverse()"
+                                        style="text-align: center;">
+
+                                        <td> {{d.title}} </td>
+
+                                        <td> {{d.docName}}</td>
+
+                                        <td> {{d.createdAt | date : 'medium'}} </td>
+                                        <td>
+                                            <button class="btn btn-info" (click)=getDocs(d)>
+                                                <i class="fas fa-download"></i> Download
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <i class="fas fa-trash" (click)=delete(d)></i>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
                         </div>
-                        
+
                         <div *ngIf="docs.length === 0">
-                            <h5 style="text-align:center;"> There are no documents to display, please add the documents! </h5>
+                            <h5 style="text-align:center;"> There are no documents to display, please add the documents!
+                            </h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card text-center bg-info text-white mb-3">
                         <div class="card-body">
+                            <br>
                             <h3>Document count</h3>
+                            <br>
                             <h4 class="display-4">
                                 <i class="fas fa-file-alt"></i> {{docs.length}}
 
                             </h4>
+                            <br>
                             <a href="/documents" class="btn btn-outline-light btn-sm">View</a>
-                        </div>
-                    </div>
-
-                    <div class="card text-center bg-success text-white mb-3">
-                        <div class="card-body">
-                            <h3>Users</h3>
-                            <h4 class="display-4">
-                                <i class="fas fa-users"></i> 4
-                            </h4>
-                            <a href="/users" class="btn btn-outline-light btn-sm">View</a>
+                            <br>
+                            <br>
+                            <br>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- MODALS -->
 
     <!-- ADD POST MODAL -->
     <app-add-document></app-add-document>
 
-    <!-- ADD USER MODAL -->
-    <div class="modal fade" id="addUserModal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Add User</h5>
-                    <button class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="password2">Confirm Password</label>
-                            <input type="password" class="form-control">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
 </body>
 
 </html>
