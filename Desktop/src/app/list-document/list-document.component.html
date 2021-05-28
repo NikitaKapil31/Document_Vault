@@ -6,15 +6,15 @@
             </div>
             <div class="col-md-6">
                 <div class="input-group">
-                    <input type="text" class="form-control" [(ngModel)] = "searchValue" placeholder="Search Documents...">
+                    <input type="text" class="form-control" [(ngModel)]="searchValue" placeholder="Search Documents...">
                     <div class="input-group-append">
                         <button class="btn btn-info">Search</button>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
-    </div>
-    </section>
+</section>
 
 
 <!-- DATA -->
@@ -30,7 +30,7 @@
                         <table class="table table-striped">
                             <thead class="thead-dark" style="text-align: center;">
                                 <tr>
-                                   
+
                                     <th>TITLE</th>
                                     <th>DOCNAME</th>
                                     <th>CREATED AT</th>
@@ -40,7 +40,7 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let d of docs | searchfilter : searchValue" style="text-align: center;">
-                                   
+
                                     <td> {{d.title}} </td>
                                     <td> {{d.docName}}</td>
                                     <td> {{d.createdAt | date : 'full'}} </td>
@@ -49,17 +49,11 @@
                                             <i class="fas fa-download"></i> Download
                                         </button>
                                     </td>
-                                    
+
                                     <td>
                                         <i class="fas fa-trash" (click)=delete(d)></i>
                                     </td>
-                                    <!-- <td>
-                                        <a routerLink="/update-document"><i class="fas fa-edit"
-                                                (click)="updateDoc(d.id)"></i></a>
-                                    </td> -->
-
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>

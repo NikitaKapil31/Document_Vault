@@ -8,6 +8,11 @@ public class BlobDemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BlobDemoApplication.class, args);
+
+		/**
+		 * The class name of application context that will be used by default for non-web
+		 * environments.
+		 */
 	}
 
 }

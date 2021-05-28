@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.kb.project.model.Doc;
 
-@Repository
+@Repository /**for encapsulating storage, retrieval, and search behavior which emulates a collection of objects".**/
+
 public interface DocRepository  extends JpaRepository<Doc,Integer>{
 
 	
