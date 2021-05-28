@@ -11,24 +11,24 @@ import javax.persistence.Lob;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="docs")
+@Entity /**Specifies that the class is an entity. This annotation is applied to the entity class.**/
+@Table(name="docs")/**Specifies the primary table for the annotated entity.**/
 public class Doc {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id        /**Specifies the primary key of an entity.**/
+	@GeneratedValue(strategy=GenerationType.IDENTITY) /**The primary key generation strategy that the persistence provider must use to generate the annotated entity primary key.**/
 	private Integer id;
 	private String docName;
 	private String docType;
 	private String title;
 	private String category;
 	
-	@Column(name = "created_at")
+	@Column(name = "created_at") /**The name of the column. Defaults to  the property or field name.**/
 	private Date createdAt;
-	@Lob
 	private byte[] data;
+	@Lob /** Specifies that a persistent property or field should be persisted as a large object to a database-supported large object type.private byte[] data;**/
 	
 	
-	@PrePersist
+	@PrePersist /** Specifies a callback method for the corresponding  lifecycle event.**/ 
 	  void createdAt() {
 	    this.createdAt = new Date();
 	  }

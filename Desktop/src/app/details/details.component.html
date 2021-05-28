@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <!--<app-navbar></app-navbar>-->
     <app-sidebar></app-sidebar>
-  
+    <app-dashnavbar></app-dashnavbar>
+
     <!-- HEADER -->
     <header id="main-header" class="py-2 bg-success text-white">
         <div class="container">
@@ -25,14 +25,9 @@
                 </div>
             </div>
         </div>
-    </header>                          
-                   
+    </header>
+
 </body>
-
-
-
-
-
 
 <!-- SEARCH -->
 
@@ -43,20 +38,22 @@
                 <a routerLink="/dashboard" class="btn btn-light btn-block">
                     <i class="fas fa-arrow-left"></i> Back To Dashboard
                 </a>
-               
+
             </div>
             <div class="col-md-6">
                 <div class="input-group">
-                    <input type="text" class="form-control" [(ngModel)] = "searchValue" placeholder="Search Documents...">
+                    <input type="text" class="form-control" [(ngModel)]="searchValue" placeholder="Search Documents...">
                     <div class="input-group-append">
                         <button class="btn btn-success">Search</button>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
-    </div>
-    </section>
+</section>
+
 <!-- DATA -->
+
 <section id="data">
     <div class="container">
         <div class="row">

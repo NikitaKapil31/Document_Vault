@@ -10,7 +10,6 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentsComponent } from './documents/documents.component';
-import { UsersComponent } from './users/users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,6 +23,7 @@ import { AddDocumentComponent } from './add-document/add-document.component';
 import { SearchfilterPipe } from './searchfilter.pipe';
 import { DetailsComponent } from './details/details.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { DashnavbarComponent } from './dashnavbar/dashnavbar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
     AboutUsComponent,
     DashboardComponent,
     DocumentsComponent,
-    UsersComponent,
     ProfileComponent,
     SettingsComponent,
     NavbarComponent,
@@ -46,7 +45,8 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
     AddDocumentComponent,
     SearchfilterPipe,
     DetailsComponent,
-    EditprofileComponent
+    EditprofileComponent,
+    DashnavbarComponent
   ],
   imports: [
     BrowserModule,
